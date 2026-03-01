@@ -107,35 +107,74 @@ export const PRINTER_PRESETS: PrinterProfile[] = [
   { ...DEFAULT_PRINTER },
 
   // ─── Bambu Lab ────────────────────────────────────────
-  { id: 'bambu-a1-mini',  name: 'A1 mini',         brand: 'Bambu Lab',  purchasePrice: 300,  lifespanHours: 3500, powerConsumption: 70,   electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 3, url: 'https://eu.store.bambulab.com/products/a1-mini' },
-  { id: 'bambu-a1',       name: 'A1',              brand: 'Bambu Lab',  purchasePrice: 450,  lifespanHours: 4000, powerConsumption: 150,  electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 2, url: 'https://eu.store.bambulab.com/products/a1' },
-  { id: 'bambu-p1s',      name: 'P1S',             brand: 'Bambu Lab',  purchasePrice: 700,  lifespanHours: 4500, powerConsumption: 100,  electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 2, url: 'https://eu.store.bambulab.com/products/p1s' },
-  { id: 'bambu-x1c',      name: 'X1 Carbon',       brand: 'Bambu Lab',  purchasePrice: 1200, lifespanHours: 5000, powerConsumption: 135,  electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 1, url: 'https://eu.store.bambulab.com/products/x1-carbon' },
+  { id: 'bambu-a1-mini',  name: 'A1 mini',          brand: 'Bambu Lab',  purchasePrice: 189,  lifespanHours: 3500, powerConsumption: 55,   electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 3, url: 'https://eu.store.bambulab.com/products/a1-mini' },
+  { id: 'bambu-a1',       name: 'A1',               brand: 'Bambu Lab',  purchasePrice: 259,  lifespanHours: 4000, powerConsumption: 95,   electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 2, url: 'https://eu.store.bambulab.com/products/a1' },
+  { id: 'bambu-p1s',      name: 'P1S',              brand: 'Bambu Lab',  purchasePrice: 389,  lifespanHours: 4500, powerConsumption: 120,  electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 2, url: 'https://eu.store.bambulab.com/products/p1s' },
+  { id: 'bambu-p2s',      name: 'P2S',              brand: 'Bambu Lab',  purchasePrice: 519,  lifespanHours: 5000, powerConsumption: 150,  electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 2, url: 'https://eu.store.bambulab.com/products/p2s' },
+  { id: 'bambu-h2s',      name: 'H2S',              brand: 'Bambu Lab',  purchasePrice: 1149, lifespanHours: 5000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 1, url: 'https://eu.store.bambulab.com/products/h2s' },
+  { id: 'bambu-h2d',      name: 'H2D',              brand: 'Bambu Lab',  purchasePrice: 1749, lifespanHours: 5000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 1, url: 'https://eu.store.bambulab.com/products/h2d' },
+  { id: 'bambu-h2c',      name: 'H2C',              brand: 'Bambu Lab',  purchasePrice: 2249, lifespanHours: 5000, powerConsumption: 250,  electricityCostPerKwh: 0.30, bedPrepTime: 2, failureRate: 1, url: 'https://eu.store.bambulab.com/products/h2c' },
 
   // ─── Prusa ────────────────────────────────────────────
-  { id: 'prusa-mini',     name: 'MINI+',           brand: 'Prusa',      purchasePrice: 430,  lifespanHours: 4000, powerConsumption: 80,   electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 3, url: 'https://www.prusa3d.com/product/original-prusa-mini/' },
-  { id: 'prusa-mk3s',     name: 'MK3S+',           brand: 'Prusa',      purchasePrice: 800,  lifespanHours: 6000, powerConsumption: 120,  electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 2, url: 'https://www.prusa3d.com/product/original-prusa-i3-mk3s-3d-printer/' },
-  { id: 'prusa-mk4s',     name: 'MK4S',            brand: 'Prusa',      purchasePrice: 1100, lifespanHours: 6000, powerConsumption: 100,  electricityCostPerKwh: 0.30, bedPrepTime: 4, failureRate: 2, url: 'https://www.prusa3d.com/product/original-prusa-mk4s-3d-printer/' },
-  { id: 'prusa-xl',       name: 'XL (Single)',      brand: 'Prusa',      purchasePrice: 2000, lifespanHours: 6000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 2, url: 'https://www.prusa3d.com/product/original-prusa-xl/' },
+  { id: 'prusa-mini',      name: 'MINI+',            brand: 'Prusa',      purchasePrice: 509,  lifespanHours: 4000, powerConsumption: 70,   electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 3, url: 'https://www.prusa3d.com/category/original-prusa-mini/' },
+  { id: 'prusa-mk4s',      name: 'MK4S',             brand: 'Prusa',      purchasePrice: 999,  lifespanHours: 6000, powerConsumption: 100,  electricityCostPerKwh: 0.30, bedPrepTime: 4, failureRate: 2, url: 'https://www.prusa3d.com/product/original-prusa-mk4s-3d-printer/' },
+  { id: 'prusa-core-one',  name: 'CORE One+',        brand: 'Prusa',      purchasePrice: 1349, lifespanHours: 6000, powerConsumption: 90,   electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 2, url: 'https://www.prusa3d.com/product/prusa-core-one/' },
+  { id: 'prusa-core-one-l',name: 'CORE One L',       brand: 'Prusa',      purchasePrice: 1699, lifespanHours: 6000, powerConsumption: 140,  electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 2, url: 'https://www.prusa3d.com/product/prusa-core-one-l-2/' },
+  { id: 'prusa-xl',        name: 'XL (Single)',      brand: 'Prusa',      purchasePrice: 2299, lifespanHours: 6000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 2, url: 'https://www.prusa3d.com/product/original-prusa-xl-assembled-single-toolhead-3d-printer/' },
 
   // ─── Creality ─────────────────────────────────────────
-  { id: 'cr-ender3-v3se', name: 'Ender 3 V3 SE',   brand: 'Creality',   purchasePrice: 200,  lifespanHours: 2500, powerConsumption: 130,  electricityCostPerKwh: 0.30, bedPrepTime: 10, failureRate: 8, url: 'https://store.creality.com/products/ender-3-v3-se' },
-  { id: 'cr-ender3-v3ke', name: 'Ender 3 V3 KE',   brand: 'Creality',   purchasePrice: 260,  lifespanHours: 2500, powerConsumption: 130,  electricityCostPerKwh: 0.30, bedPrepTime: 8,  failureRate: 7, url: 'https://store.creality.com/products/ender-3-v3-ke' },
-  { id: 'cr-ender3-v2',   name: 'Ender 3 V2',      brand: 'Creality',   purchasePrice: 250,  lifespanHours: 3000, powerConsumption: 270,  electricityCostPerKwh: 0.30, bedPrepTime: 10, failureRate: 8 },
-  { id: 'cr-k1',          name: 'K1',               brand: 'Creality',   purchasePrice: 400,  lifespanHours: 3000, powerConsumption: 350,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 5, url: 'https://store.creality.com/products/k1-3d-printer' },
-  { id: 'cr-k1c',         name: 'K1C',              brand: 'Creality',   purchasePrice: 500,  lifespanHours: 3500, powerConsumption: 350,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 4, url: 'https://store.creality.com/products/k1c-3d-printer' },
-  { id: 'cr-k1max',       name: 'K1 Max',           brand: 'Creality',   purchasePrice: 700,  lifespanHours: 3500, powerConsumption: 500,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 4, url: 'https://store.creality.com/products/creality-k1-max-3d-printer' },
+  { id: 'cr-ender3-v3se',  name: 'Ender 3 V3 SE',   brand: 'Creality',   purchasePrice: 200,  lifespanHours: 2500, powerConsumption: 130,  electricityCostPerKwh: 0.30, bedPrepTime: 10, failureRate: 8, url: 'https://store.creality.com/products/ender-3-v3-se' },
+  { id: 'cr-ender3-v3ke',  name: 'Ender 3 V3 KE',   brand: 'Creality',   purchasePrice: 260,  lifespanHours: 2500, powerConsumption: 130,  electricityCostPerKwh: 0.30, bedPrepTime: 8,  failureRate: 7, url: 'https://store.creality.com/products/ender-3-v3-ke' },
+  { id: 'cr-ender3-v3',    name: 'Ender 3 V3',      brand: 'Creality',   purchasePrice: 319,  lifespanHours: 3000, powerConsumption: 135,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://store.creality.com/eu/products/ender-3-v3-3d-printer' },
+  { id: 'cr-ender3-v3plus',name: 'Ender 3 V3 Plus',  brand: 'Creality',   purchasePrice: 399,  lifespanHours: 3000, powerConsumption: 165,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://store.creality.com/eu/products/ender-3-v3-plus-3d-printer' },
+  { id: 'cr-k1',           name: 'K1',              brand: 'Creality',   purchasePrice: 400,  lifespanHours: 3000, powerConsumption: 150,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 5, url: 'https://store.creality.com/products/k1-3d-printer' },
+  { id: 'cr-k1c',          name: 'K1C',             brand: 'Creality',   purchasePrice: 500,  lifespanHours: 3500, powerConsumption: 150,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 4, url: 'https://store.creality.com/products/k1c-3d-printer' },
+  { id: 'cr-k1max',        name: 'K1 Max',          brand: 'Creality',   purchasePrice: 700,  lifespanHours: 3500, powerConsumption: 250,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 4, url: 'https://store.creality.com/products/creality-k1-max-3d-printer' },
+  { id: 'cr-k2',           name: 'K2 Combo',        brand: 'Creality',   purchasePrice: 559,  lifespanHours: 4000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 3, url: 'https://store.creality.com/eu/products/creality-k2-combo-3d-printer' },
+  { id: 'cr-k2pro',        name: 'K2 Pro',          brand: 'Creality',   purchasePrice: 899,  lifespanHours: 4000, powerConsumption: 250,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 3, url: 'https://store.creality.com/eu/products/creality-k2-pro-combo-3d-printer' },
+  { id: 'cr-k2plus',       name: 'K2 Plus',         brand: 'Creality',   purchasePrice: 849,  lifespanHours: 4000, powerConsumption: 250,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 3, url: 'https://store.creality.com/eu/products/creality-k2-plus-combo-3d-printer' },
 
-  // ─── Anycubic ─────────────────────────────────────────
-  { id: 'ac-kobra2',      name: 'Kobra 2',          brand: 'Anycubic',   purchasePrice: 250,  lifespanHours: 2500, powerConsumption: 120,  electricityCostPerKwh: 0.30, bedPrepTime: 8, failureRate: 7, url: 'https://store.anycubic.com/products/kobra-2' },
-  { id: 'ac-kobra2max',   name: 'Kobra 2 Max',      brand: 'Anycubic',   purchasePrice: 450,  lifespanHours: 3000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 8, failureRate: 6 },
+  // ─── Anycubic — FDM ───────────────────────────────────
+  { id: 'ac-kobra3',       name: 'Kobra 3',         brand: 'Anycubic',   purchasePrice: 199,  lifespanHours: 3000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://eu.anycubic.com/products/kobra-3' },
+  { id: 'ac-kobra3v2',     name: 'Kobra 3 V2',      brand: 'Anycubic',   purchasePrice: 229,  lifespanHours: 3000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://eu.anycubic.com/products/kobra-3-v2' },
+  { id: 'ac-kobra-x',      name: 'Kobra X',         brand: 'Anycubic',   purchasePrice: 269,  lifespanHours: 3000, powerConsumption: 250,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 4, url: 'https://eu.anycubic.com/products/kobra-x' },
+  { id: 'ac-kobra-s1',     name: 'Kobra S1',        brand: 'Anycubic',   purchasePrice: 349,  lifespanHours: 3500, powerConsumption: 180,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 4, url: 'https://eu.anycubic.com/products/kobra-s1' },
+  { id: 'ac-kobra3-max',   name: 'Kobra 3 Max',     brand: 'Anycubic',   purchasePrice: 599,  lifespanHours: 3500, powerConsumption: 300,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 4, url: 'https://eu.anycubic.com/products/kobra-3-max-combo' },
+  { id: 'ac-kobra-s1-max', name: 'Kobra S1 Max',    brand: 'Anycubic',   purchasePrice: 649,  lifespanHours: 4000, powerConsumption: 400,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 3, url: 'https://eu.anycubic.com/products/kobra-s1-max' },
+  // ─── Anycubic — Resin ─────────────────────────────────
+  { id: 'ac-photon-m4',    name: 'Photon Mono 4 (Resin)',   brand: 'Anycubic', purchasePrice: 189, lifespanHours: 2000, powerConsumption: 54,  electricityCostPerKwh: 0.30, bedPrepTime: 15, failureRate: 5, url: 'https://eu.anycubic.com/products/photon-mono-4' },
+  { id: 'ac-photon-m7pro', name: 'Photon M7 Pro (Resin)',   brand: 'Anycubic', purchasePrice: 429, lifespanHours: 2000, powerConsumption: 150, electricityCostPerKwh: 0.30, bedPrepTime: 15, failureRate: 4, url: 'https://eu.anycubic.com/products/photon-mono-m7-pro' },
 
-  // ─── Elegoo ───────────────────────────────────────────
-  { id: 'el-neptune4pro',  name: 'Neptune 4 Pro',   brand: 'Elegoo',     purchasePrice: 300,  lifespanHours: 2500, powerConsumption: 120,  electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 5, url: 'https://www.elegoo.com/products/neptune-4-pro-fdm-3d-printer' },
-  { id: 'el-neptune4plus', name: 'Neptune 4 Plus',  brand: 'Elegoo',     purchasePrice: 400,  lifespanHours: 3000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 5, failureRate: 5 },
+  // ─── Elegoo — FDM ─────────────────────────────────────
+  { id: 'el-neptune4',     name: 'Neptune 4',       brand: 'Elegoo',     purchasePrice: 249,  lifespanHours: 2500, powerConsumption: 250,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 6, url: 'https://eu.elegoo.com/products/elegoo-neptune-4-fdm-3d-printer' },
+  { id: 'el-neptune4pro',  name: 'Neptune 4 Pro',   brand: 'Elegoo',     purchasePrice: 300,  lifespanHours: 2500, powerConsumption: 120,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://eu.elegoo.com/products/neptune-4-pro-fdm-3d-printer' },
+  { id: 'el-neptune4plus', name: 'Neptune 4 Plus',  brand: 'Elegoo',     purchasePrice: 400,  lifespanHours: 3000, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://eu.elegoo.com/products/neptune-4-plus-fdm-3d-printer' },
+  { id: 'el-neptune4max',  name: 'Neptune 4 Max',   brand: 'Elegoo',     purchasePrice: 549,  lifespanHours: 3000, powerConsumption: 350,  electricityCostPerKwh: 0.30, bedPrepTime: 6,  failureRate: 5, url: 'https://eu.elegoo.com/products/neptune-4-max-fdm-3d-printer' },
+  { id: 'el-centauri',     name: 'Centauri Carbon', brand: 'Elegoo',     purchasePrice: 437,  lifespanHours: 3500, powerConsumption: 160,  electricityCostPerKwh: 0.30, bedPrepTime: 3,  failureRate: 4, url: 'https://eu.elegoo.com/products/centauri-carbon' },
+  { id: 'el-centauri2',    name: 'Centauri Carbon 2 Combo', brand: 'Elegoo', purchasePrice: 439, lifespanHours: 3500, powerConsumption: 170, electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 3, url: 'https://eu.elegoo.com/products/centauri-carbon-2-combo' },
+  // ─── Elegoo — Resin ───────────────────────────────────
+  { id: 'el-mars5ultra',   name: 'Mars 5 Ultra 9K (Resin)',     brand: 'Elegoo', purchasePrice: 279, lifespanHours: 2000, powerConsumption: 60,  electricityCostPerKwh: 0.30, bedPrepTime: 15, failureRate: 5, url: 'https://eu.elegoo.com/products/mars-5-ultra-9k-7inch-monochrome-lcd-resin-3d-printer' },
+  { id: 'el-saturn4',      name: 'Saturn 4 Ultra 16K (Resin)',  brand: 'Elegoo', purchasePrice: 449, lifespanHours: 2000, powerConsumption: 120, electricityCostPerKwh: 0.30, bedPrepTime: 15, failureRate: 5, url: 'https://eu.elegoo.com/products/saturn-4-ultra-16k-10inch-monochrome-lcd-resin-3d-printer' },
+
+  // ─── QIDI ─────────────────────────────────────────────
+  { id: 'qidi-q1pro',     name: 'Q1 Pro',          brand: 'QIDI',       purchasePrice: 399,  lifespanHours: 3500, powerConsumption: 200,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 4, url: 'https://eu.qidi3d.com/products/q1-pro-3d-printer' },
+  { id: 'qidi-plus4',     name: 'Plus4',           brand: 'QIDI',       purchasePrice: 649,  lifespanHours: 4000, powerConsumption: 300,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 3, url: 'https://qidi3d.com/products/plus4-3d-printer' },
+  { id: 'qidi-max4',      name: 'Max4',            brand: 'QIDI',       purchasePrice: 1049, lifespanHours: 4000, powerConsumption: 350,  electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 3, url: 'https://eu.qidi3d.com/products/max4' },
+
+  // ─── Sovol ────────────────────────────────────────────
+  { id: 'sovol-sv06',     name: 'SV06',             brand: 'Sovol',      purchasePrice: 159,  lifespanHours: 2500, powerConsumption: 110,  electricityCostPerKwh: 0.30, bedPrepTime: 8,  failureRate: 7, url: 'https://sovol.eu/' },
+  { id: 'sovol-zero',     name: 'Zero',             brand: 'Sovol',      purchasePrice: 329,  lifespanHours: 3000, powerConsumption: 100,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 5, url: 'https://sovol.eu/products/sovol-zero-3d-printer' },
+  { id: 'sovol-sv08',     name: 'SV08',             brand: 'Sovol',      purchasePrice: 442,  lifespanHours: 3500, powerConsumption: 120,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 4, url: 'https://sovol.eu/products/sovol-sv08-3d-printer' },
+
+  // ─── FlashForge ───────────────────────────────────────
+  { id: 'ff-adv5m',       name: 'Adventurer 5M',   brand: 'FlashForge', purchasePrice: 299,  lifespanHours: 3000, powerConsumption: 150,  electricityCostPerKwh: 0.30, bedPrepTime: 4,  failureRate: 5, url: 'https://eu.flashforge.com/en-eu/products/adventurer-5m-3d-printer' },
+  { id: 'ff-adv5mpro',    name: 'Adventurer 5M Pro', brand: 'FlashForge', purchasePrice: 499, lifespanHours: 3500, powerConsumption: 180, electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 3, url: 'https://www.flashforge.com/products/adventurer-5m-pro-3d-printer' },
+
+  // ─── AnkerMake ────────────────────────────────────────
+  { id: 'anker-m5c',      name: 'M5C',             brand: 'AnkerMake',  purchasePrice: 345,  lifespanHours: 3000, powerConsumption: 85,   electricityCostPerKwh: 0.30, bedPrepTime: 5,  failureRate: 5, url: 'https://eu.eufymake.com/products/m5c' },
 
   // ─── Artillery ────────────────────────────────────────
-  { id: 'art-sw-x3pro',   name: 'Sidewinder X3 Pro', brand: 'Artillery', purchasePrice: 350,  lifespanHours: 3000, powerConsumption: 150,  electricityCostPerKwh: 0.30, bedPrepTime: 6, failureRate: 5 },
+  { id: 'art-sw-x3pro',   name: 'Sidewinder X3 Pro', brand: 'Artillery', purchasePrice: 350, lifespanHours: 3000, powerConsumption: 150, electricityCostPerKwh: 0.30, bedPrepTime: 6, failureRate: 5 },
 
   // ─── Voron (DIY) ──────────────────────────────────────
   { id: 'voron-2.4',      name: 'Voron 2.4 (DIY)',  brand: 'Voron',      purchasePrice: 700,  lifespanHours: 5000, powerConsumption: 400,  electricityCostPerKwh: 0.30, bedPrepTime: 3, failureRate: 3 },
