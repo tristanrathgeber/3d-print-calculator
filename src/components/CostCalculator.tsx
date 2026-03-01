@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import { ChevronDown, Zap, Clock, Wrench, AlertTriangle, DollarSign, Cpu } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+import { ChevronDown, Zap, Clock, Wrench, AlertTriangle, DollarSign, Cpu, ExternalLink } from 'lucide-react';
 import type { Material, CostBreakdown, PrinterProfile, AppSettings } from '../types';
-import { MATERIALS, PRINTER_PRESETS } from '../types';
+import { MATERIALS, PRINTER_PRESETS, MATERIAL_CATEGORY_LABELS } from '../types';
+import type { MaterialCategory } from '../types';
 import { calculateCost } from '../utils/costCalculator';
 
 interface CostCalculatorProps {
@@ -20,10 +21,29 @@ export const CostCalculator = ({ volume, settings, onCalculate }: CostCalculator
   const [quantity, setQuantity] = useState(1);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
+  // Group printers by brand
+  const printersByBrand = useMemo(() => {
+    const groups: Record<string, PrinterProfile[]> = {};
+    for (const p of PRINTER_PRESETS) {
+      if (!groups[p.brand]) groups[p.brand] = [];
+      groups[p.brand].push(p);
+    }
+    return groups;
+  }, []);
+
+  // Group materials by brand, then show category as suffix
+  const materialsByBrand = useMemo(() => {
+    const groups: Record<string, Material[]> = {};
+    for (const m of MATERIALS) {
+      if (!groups[m.brand]) groups[m.brand] = [];
+      groups[m.brand].push(m);
+    }
+    return groups;
+  }, []);
+
   // When a preset is selected, update all printer fields
   const handlePresetChange = (presetId: string) => {
     if (presetId === 'custom') {
-      // Keep current values, just change id/name
       setPrinter((prev) => ({ ...prev, id: 'custom', name: 'Custom' }));
     } else {
       const preset = PRINTER_PRESETS.find((p) => p.id === presetId);
@@ -36,8 +56,7 @@ export const CostCalculator = ({ volume, settings, onCalculate }: CostCalculator
     setPrinter((prev) => ({
       ...prev,
       [field]: value,
-      // If they edit any field while on a preset, mark as custom
-      ...(field !== 'id' && field !== 'name' && prev.id !== 'custom'
+      ...(field !== 'id' && field !== 'name' && field !== 'brand' && field !== 'url' && prev.id !== 'custom'
         ? { id: 'custom', name: `${prev.name} (Custom)` }
         : {}),
     }));
@@ -57,18 +76,38 @@ export const CostCalculator = ({ volume, settings, onCalculate }: CostCalculator
       {/* Printer Preset */}
       <div>
         <label className="data-label block mb-1.5">Printer</label>
-        <select
-          value={PRINTER_PRESETS.some((p) => p.id === printer.id) ? printer.id : 'custom'}
-          onChange={(e) => handlePresetChange(e.target.value)}
-          className="select"
-        >
-          {PRINTER_PRESETS.map((p) => (
-            <option key={p.id} value={p.id}>{p.name}</option>
-          ))}
-          {!PRINTER_PRESETS.some((p) => p.id === printer.id) && (
-            <option value="custom">{printer.name}</option>
+        <div className="flex gap-2">
+          <select
+            value={PRINTER_PRESETS.some((p) => p.id === printer.id) ? printer.id : 'custom'}
+            onChange={(e) => handlePresetChange(e.target.value)}
+            className="select flex-1"
+          >
+            {Object.entries(printersByBrand).map(([brand, printers]) => (
+              <optgroup key={brand} label={brand}>
+                {printers.map((p) => (
+                  <option key={p.id} value={p.id}>{p.name}</option>
+                ))}
+              </optgroup>
+            ))}
+            {!PRINTER_PRESETS.some((p) => p.id === printer.id) && (
+              <optgroup label="Custom">
+                <option value="custom">{printer.name}</option>
+              </optgroup>
+            )}
+          </select>
+          {printer.url && (
+            <a href={printer.url} target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-lg transition-all duration-200 shrink-0"
+              style={{
+                width: '42px', border: '1px solid var(--color-border)',
+                background: 'var(--color-bg-elevated)', color: 'var(--color-text-muted)',
+              }}
+              title="View product"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
           )}
-        </select>
+        </div>
       </div>
 
       {/* Advanced Printer Settings Toggle */}
@@ -223,17 +262,47 @@ export const CostCalculator = ({ volume, settings, onCalculate }: CostCalculator
       {/* Material */}
       <div>
         <label className="data-label block mb-1.5">Material</label>
-        <select
-          value={material.id}
-          onChange={(e) => setMaterial(MATERIALS.find(m => m.id === e.target.value) || MATERIALS[0])}
-          className="select"
-        >
-          {MATERIALS.map((mat) => (
-            <option key={mat.id} value={mat.id}>
-              {mat.name} — {mat.pricePerKg} €/kg
-            </option>
-          ))}
-        </select>
+        <div className="flex gap-2">
+          <select
+            value={material.id}
+            onChange={(e) => setMaterial(MATERIALS.find(m => m.id === e.target.value) || MATERIALS[0])}
+            className="select flex-1"
+          >
+            {Object.entries(materialsByBrand).map(([brand, mats]) => (
+              <optgroup key={brand} label={brand}>
+                {mats.map((mat) => (
+                  <option key={mat.id} value={mat.id}>
+                    {mat.name} — {mat.pricePerKg} €/kg · {MATERIAL_CATEGORY_LABELS[mat.category as MaterialCategory]}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+          {material.url && (
+            <a href={material.url} target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-lg transition-all duration-200 shrink-0"
+              style={{
+                width: '42px', border: '1px solid var(--color-border)',
+                background: 'var(--color-bg-elevated)', color: 'var(--color-text-muted)',
+              }}
+              title="View product"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
+        </div>
+        {/* Material tag */}
+        <div className="flex items-center gap-2 mt-1.5">
+          <span className="badge text-[10px]" style={{ background: `${material.color}22`, color: material.color, border: `1px solid ${material.color}44` }}>
+            {material.brand}
+          </span>
+          <span className="badge text-[10px]" style={{ background: 'var(--color-bg-elevated)', color: 'var(--color-text-muted)', border: '1px solid var(--color-border)' }}>
+            {MATERIAL_CATEGORY_LABELS[material.category]}
+          </span>
+          <span className="text-[10px] font-mono" style={{ color: 'var(--color-text-muted)' }}>
+            {material.density} g/cm³
+          </span>
+        </div>
       </div>
 
       {/* Infill */}
