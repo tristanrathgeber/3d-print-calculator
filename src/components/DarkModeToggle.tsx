@@ -1,20 +1,16 @@
 import { Moon, Sun } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+
+const getInitialTheme = (): boolean => {
+  const stored = localStorage.getItem('3dpc-theme');
+  const isLight = stored === 'light';
+  document.documentElement.classList.toggle('light', isLight);
+  document.documentElement.classList.toggle('dark', !isLight);
+  return isLight;
+};
 
 export const DarkModeToggle = () => {
-  const [isLight, setIsLight] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('3dpc-theme');
-    if (stored === 'light') {
-      setIsLight(true);
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    }
-  }, []);
+  const [isLight, setIsLight] = useState(getInitialTheme);
 
   const toggle = () => {
     const newIsLight = !isLight;

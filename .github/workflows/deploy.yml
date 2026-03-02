@@ -1,0 +1,52 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          # Clean old assets and deploy new build
+          ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf /var/www/3d-print-calculator/assets/*"
+          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key" dist/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/3d-print-calculator/
+          ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "systemctl reload nginx"
+
+      - name: Verify deployment
+        run: |
+          sleep 3
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://calc.makrhub.io)
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "Deployment verification failed! HTTP status: $HTTP_STATUS"
+            exit 1
+          fi
+          echo "Deployment verified! calc.makrhub.io returns HTTP $HTTP_STATUS"
